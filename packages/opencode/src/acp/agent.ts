@@ -201,6 +201,8 @@ export namespace ACP {
                       sessionUpdate: "tool_call_update",
                       toolCallId: part.callID,
                       status: "in_progress",
+                      kind: toToolKind(part.tool),
+                      title: part.tool,
                       locations: toLocations(part.tool, part.state.input),
                       rawInput: part.state.input,
                     },
@@ -277,6 +279,7 @@ export namespace ACP {
                       kind,
                       content,
                       title: part.state.title,
+                      rawInput: part.state.input,
                       rawOutput: {
                         output: part.state.output,
                         metadata: part.state.metadata,
@@ -297,6 +300,9 @@ export namespace ACP {
                       sessionUpdate: "tool_call_update",
                       toolCallId: part.callID,
                       status: "failed",
+                      kind: toToolKind(part.tool),
+                      title: part.tool,
+                      rawInput: part.state.input,
                       content: [
                         {
                           type: "content",
@@ -526,6 +532,8 @@ export namespace ACP {
                     sessionUpdate: "tool_call_update",
                     toolCallId: part.callID,
                     status: "in_progress",
+                    kind: toToolKind(part.tool),
+                    title: part.tool,
                     locations: toLocations(part.tool, part.state.input),
                     rawInput: part.state.input,
                   },
@@ -601,6 +609,7 @@ export namespace ACP {
                     kind,
                     content,
                     title: part.state.title,
+                    rawInput: part.state.input,
                     rawOutput: {
                       output: part.state.output,
                       metadata: part.state.metadata,
@@ -619,6 +628,9 @@ export namespace ACP {
                     sessionUpdate: "tool_call_update",
                     toolCallId: part.callID,
                     status: "failed",
+                    kind: toToolKind(part.tool),
+                    title: part.tool,
+                    rawInput: part.state.input,
                     content: [
                       {
                         type: "content",
